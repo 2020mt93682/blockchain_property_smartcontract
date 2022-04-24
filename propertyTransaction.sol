@@ -16,9 +16,7 @@ contract propertyTransaction{
         string description;
         address witnessHash;
     }
-    
-
-    
+       
     
     struct personsProperties
     {
@@ -58,7 +56,7 @@ contract propertyTransaction{
 
     function setPropertiesInfo(address _ownerHash,
              string memory _propertyType,
-             string memory _description) onlyAdmin public
+             string memory _description) onlyAdmin private
     {
         propertyInfo memory pInfo;
         pInfo.propertyType = _propertyType;
@@ -135,6 +133,7 @@ contract propertyTransaction{
         require(users[_sellerHash] ==true);
         require(users[_buyerHash] == true);
         require(users[_witnessHash] == true);
+        require(users[_combinedHash] == true);
 
         
         transferRecord memory curRecord;
